@@ -9,5 +9,13 @@
         </div>
     @endif
     
-    <p>Hello, {{ $user->name }}</p>
+    <h1 class ="text-center">{{ $user->name }}'s Profile</h1>
+    <div class = "container">
+        <h5> Username: {{ $user->username }}</h5>
+        <h5>Email: {{ $user->email }}</h5>
+    </div>
+    <hr>
+    <div class = "container">
+        <h6>Favorites:</h6>
+    </div>
 @endsection

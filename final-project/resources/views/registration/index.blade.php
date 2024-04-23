@@ -17,6 +17,9 @@
         <div class="mb-3">
             <label class="form-label" for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control">
+            @error('email')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="mb-3">
             <label class="form-label" for="name">Full Name</label>
