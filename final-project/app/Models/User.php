@@ -17,11 +17,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    public $timestamps = false;
     // protected $primaryKey = 'username';
+
     protected $fillable = [
-        'username',
         'name',
+        'username',
         'password',
     ];
 

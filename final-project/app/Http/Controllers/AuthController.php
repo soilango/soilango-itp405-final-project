@@ -22,7 +22,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $loginWasSuccessful = Auth::attempt([
-            'username' => $request->input('username'),
+            'username' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
 

@@ -15,6 +15,10 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control">
+        </div>
+        <div class="mb-3">
             <label class="form-label" for="name">Full Name</label>
             <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
             @error('name')

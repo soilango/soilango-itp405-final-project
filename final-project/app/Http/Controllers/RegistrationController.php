@@ -17,21 +17,23 @@ class RegistrationController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|unique:users',
+            'username' => 'required|unique:users,username',
             'name' => 'required',
+            'email' => 'required|unique:users,email',
             'password' => 'required',
         ]);
         $user = new User();
         $user->username = $request->input('username');
         $user->name = $request->input('name');
+        $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password')); // bcrypt
         
-        dd($user);
+        // dd($user);
         $user->save();
 
         Auth::login($user);
-        // return redirect()
-        //     ->route('profile.index')
-        //     ->with('success', "Welcome, {$request->input('name')}!");
+        return redirect()
+            ->route('profile.index')
+            ->with('success', "Welcome, {$request->input('name')}!");
     }
 }
