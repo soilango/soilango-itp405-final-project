@@ -12,6 +12,9 @@
         <ul class="nav d-flex justify-content-end">
             @if (Auth::check())
                 <li class="nav-item">
+                    <a href="{{ route('post.index') }}" class="nav-link">Posts</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('profile.index') }}" class="nav-link">Profile</a>
                 </li>
                 <li>
