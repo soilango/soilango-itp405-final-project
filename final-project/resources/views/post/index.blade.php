@@ -23,18 +23,27 @@
                 <th>Title</th>
                 <th>Poster</th>
                 <th></th>
+                <th></th>
                 
                 </tr>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->user->username }}</td>
+                        <td class = "align-middle">{{ $post->title }}</td>
+                        <td class = "align-middle">{{ $post->user->username }}</td>
                         <!-- <td>{{ $post->cuisine }}</td>
                         <td>{{ $post->allergens }}</td>
                         <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->
-                        <td><a href="{{ route('post.show', [$post->id]) }}">Details</a></td>
+                        <td class = "align-middle"><a href="{{ route('post.show', [$post->id]) }}">Details</a></td>
+                        <td>
+                            <form method="post" action="{{ route('favorites.add') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link">Add to Favorites</button>
+                                <input type="hidden" id="username" name="username" value="{{ $user->username }}" />
+                                <input type="hidden" id="postId" name="postId" value="{{ $post->id }}" />
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

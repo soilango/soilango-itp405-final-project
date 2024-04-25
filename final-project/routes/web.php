@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/posts/comment/edit/{id}', [CommentController::class, 'editComment'])->name('comment.edit');
     Route::post('/posts/comment/edit', [CommentController::class, 'submitEdit'])->name('comment.submitEdit');
     Route::post('/posts/comment/delete', [CommentController::class, 'deleteComment'])->name('comment.delete');
+
+    Route::post('/favorites', [FavoriteController::class, 'addFavorite'])->name('favorites.add');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
