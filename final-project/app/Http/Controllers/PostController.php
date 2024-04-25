@@ -12,11 +12,13 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with(['user'])->get();
+        $count = count($posts);
 
         // dd($posts->user->name);
         return view('post/index', [
             'user' => Auth::user(),
             'posts' => $posts,
+            'count' => $count,
         ]);
     }
 
@@ -24,6 +26,16 @@ class PostController extends Controller
         return view('post/add', [
             'user' => Auth::user(),
         ]);
+    }
+
+    public function show($id) {
+        $post = Post::with(['user'])->where('id', '=', $id)->first();
+
+        return view('post/show', [
+            'user' => Auth::user(),
+            'post' => $post,
+        ]);
+
     }
 
     public function createPost(Request $request) {

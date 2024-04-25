@@ -13,29 +13,31 @@
     <h1>{{ $user->name }}'s Recipe Feed</h1>
 
     <a href="{{ route('post.add') }}">Add Post</a>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th>Title</th>
-            <th>Poster</th>
-            <th>Cuisine</th>
-            <th>Allergens</th>
-            <th></th>
-            <th></th>
-            
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($posts as $post)
+
+    @if ($count == 0)
+        <h3>No posts yet!</h3>
+    @else
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->user->username }}</td>
-                    <td>{{ $post->cuisine }}</td>
-                    <td>{{ $post->allergens }}</td>
-                    <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td>
-                    <td>DETAILS</td>
+                <th>Title</th>
+                <th>Poster</th>
+                <th></th>
+                
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($posts as $post)
+                    <tr>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->user->username }}</td>
+                        <!-- <td>{{ $post->cuisine }}</td>
+                        <td>{{ $post->allergens }}</td>
+                        <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->
+                        <td><a href="{{ route('post.show', [$post->id]) }}">Details</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
 @endsection
