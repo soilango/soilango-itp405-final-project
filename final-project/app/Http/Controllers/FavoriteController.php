@@ -12,10 +12,37 @@ class FavoriteController extends Controller
         $favorite->username = $request->input('username');
         $favorite->post_id = $request->input('postId');
 
-        // dd($favorite);
+        // dd($request);
+        $exists = Favorite::where('post_id', '=', $request->input('postId'))->first();
 
-        $favorite->save();
+        // $count = count($favorites);
 
-        return redirect()->route('profile.index')->with('success', "Successfully added to favorites!");
+        // dd($exists);
+
+        if ($exists) {
+            return redirect()->route('profile.index')->with('error', "This post is already in favorites!");
+        } else {
+            $favorite->save();
+            return redirect()->route('profile.index')->with('success', "Successfully added to favorites!");
+        }
+    }
+
+    public function removeFavorite(Request $request) {
+        $favorite = Favorite::find($request->input('favoriteId'));
+
+        if ($favorite) {
+            $favorite->delete();
+
+            return redirect()
+            ->route('profile.index')
+            ->with('success', "You have successfully deleted from your favorites!");
+
+        }
+
+        else {
+            return redirect()
+            ->route('profile.index')
+            ->with('error', "Deletion error: favorite not found.");
+        }
     }
 }

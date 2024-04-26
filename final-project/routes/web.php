@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/posts/comment/delete', [CommentController::class, 'deleteComment'])->name('comment.delete');
 
     Route::post('/favorites', [FavoriteController::class, 'addFavorite'])->name('favorites.add');
+    Route::post('/favorites/delete', [FavoriteController::class, 'removeFavorite'])->name('favorites.delete');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

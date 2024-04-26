@@ -11,10 +11,16 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $favorites = Favorite::where('username', '=', $user->username);
-        dd($favorites);
+        $favorites = Favorite::with(['post'])->where('username', '=', $user->username)->get();
+        // dd($favorites->posts);
+
+        $count = count($favorites);
+
+        // dd($count);
         return view('profile/index', [
             'user' => Auth::user(),
+            'favorites' => $favorites,
+            'favoritesCount' => $count,
         ]);
     }
 }

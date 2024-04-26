@@ -3,6 +3,12 @@
 @section('title', 'Profile')
 
 @section('main')
+
+    @if (session('error'))
+        <div class = "alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     @if (session('success'))
         <div class = "alert alert-success" role="alert">
             {{ session('success') }}
@@ -16,6 +22,38 @@
     </div>
     <hr>
     <div class = "container">
-        <h6>Favorites:</h6>
+        <h3>Favorites:</h3>
+        @if ($favoritesCount == 0)
+            <p>No favorites yet! View your feed to start adding posts to favorites.</p>
+        @else
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Poster</th>
+                        <th>Date/Time Faved</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($favorites as $favorite)
+                        <tr>
+                            <td class = "align-middle">{{ $favorite->post->title }}</td>
+                            <td class = "align-middle">{{ $favorite->post->user->username }}</td>
+                            <td class = "align-middle">{{ date("F j, Y, g:i a",strtotime($favorite->updated_at)) }}</td>
+                            <td class = "align-middle"><a href="{{ route('post.show', [$favorite->post->id]) }}">Details</a></td>
+                            <td>
+                                <form method="post" action="{{ route('favorites.delete') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link">Delete</button>
+                                    <input type="hidden" id="favoriteId" name="favoriteId" value="{{ $favorite->id }}" />
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
 @endsection
