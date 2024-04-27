@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('cuisine');
             $table->string('allergens');
             $table->string('instructions');
-            $table->foreignId('username')->references('username')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 

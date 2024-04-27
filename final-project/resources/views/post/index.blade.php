@@ -14,6 +14,8 @@
 
     <a class = "btn btn-primary" href="{{ route('post.add') }}">Add Post</a>
 
+    <hr>
+
     @if ($count == 0)
         <h3>No posts yet!</h3>
     @else
@@ -31,7 +33,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td class = "align-middle">{{ $post->title }}</td>
-                        <td class = "align-middle">{{ $post->user->username }}</td>
+                        <td class = "align-middle">{{ $post->username }}</td>
                         <!-- <td>{{ $post->cuisine }}</td>
                         <td>{{ $post->allergens }}</td>
                         <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->
@@ -40,7 +42,7 @@
                             <form method="post" action="{{ route('favorites.add') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Add to Favorites</button>
-                                <input type="hidden" id="username" name="username" value="{{ $user->username }}" />
+                                <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}" />
                                 <input type="hidden" id="postId" name="postId" value="{{ $post->id }}" />
                             </form>
                         </td>

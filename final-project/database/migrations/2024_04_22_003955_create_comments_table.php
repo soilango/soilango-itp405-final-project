@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('body');
             $table->timestamps();
-            $table->foreignId('username')->references('username')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('post_id')->references('id')->on('posts');
         });
     }

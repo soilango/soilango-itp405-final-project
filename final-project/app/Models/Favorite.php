@@ -12,7 +12,7 @@ class Favorite extends Model
     protected $primaryKey = 'id';
 
     public function user() {
-        return $this->belongsTo(User::class, 'username');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function post() {

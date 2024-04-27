@@ -8,14 +8,17 @@ use Auth;
 use App\Models\Post;
 use App\Models\Comment;
 
+// use DB;
+
 class PostController extends Controller
 {
     public function index()
     {
         $posts = Post::with(['user'])->get();
+        // $posts = Post::join('users', 'users.username', '=', 'posts.username')->get();
         $count = count($posts);
 
-        // dd($posts->user->name);
+        // dd($posts);
         return view('post/index', [
             'user' => Auth::user(),
             'posts' => $posts,
@@ -61,7 +64,7 @@ class PostController extends Controller
         $post->cuisine = $request->input('cuisine');
         $post->allergens = $request->input('allergens');
         $post->instructions = $request->input('instructions'); // bcrypt
-        $post->username = $request->input('username');
+        $post->user_id = $request->input('user_id');
         // dd($user);
 
         // dd($post);

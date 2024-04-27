@@ -9,7 +9,7 @@ class FavoriteController extends Controller
 {
     public function addFavorite(Request $request) {
         $favorite = new Favorite();
-        $favorite->username = $request->input('username');
+        $favorite->user_id = $request->input('user_id');
         $favorite->post_id = $request->input('postId');
 
         // dd($request);

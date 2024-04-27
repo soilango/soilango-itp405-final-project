@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $favorites = Favorite::with(['post'])->where('username', '=', $user->username)->get();
+        $favorites = Favorite::with(['post'])->where('user_id', '=', $user->id)->get();
         // dd($favorites->posts);
 
         $count = count($favorites);

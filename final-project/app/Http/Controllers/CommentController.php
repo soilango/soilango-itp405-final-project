@@ -25,7 +25,7 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->body = $request->input('body');
-        $comment->username = $request->input('username');
+        $comment->user_id = $request->input('user_id');
         $comment->post_id = $request->input('postId');
         
         // dd($comment);

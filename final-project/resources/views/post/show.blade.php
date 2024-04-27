@@ -12,7 +12,7 @@
 
     @if (session('error'))
         <div class = "alert alert-danger" role="alert">
-            {{ session('error') }}
+            {{ session()->pull('error') }}
         </div>
     @endif
 
@@ -51,7 +51,7 @@
                                 <td class = "align-middle">{{ $comment->user->username }}</td>
                                 <td class = "align-middle">{{ date("F j, Y, g:i a",strtotime($comment->updated_at)) }}</td>
                                 <td class = "align-middle">{{ $comment->body }}</td>
-                                @if ($user->username == $comment->user->name)
+                                @if ($user->id == $comment->user->id)
                                     <td class = "align-middle"><a class = "btn btn-warning" href="{{ route('comment.edit', [$comment->id]) }}">Edit</a></td>
                                     <td>
                                         <form method="post" action="{{ route('comment.delete') }}">

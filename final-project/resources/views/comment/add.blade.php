@@ -15,7 +15,7 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <input type="hidden" id="username" name="username" value="{{ $user->username }}" />
+        <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}" />
         <input type="hidden" id="postId" name="postId" value="{{ $post->id }}" />
         <input type="submit" value="Post Comment" class="btn btn-primary">
     </form>
