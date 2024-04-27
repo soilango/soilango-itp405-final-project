@@ -25,8 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('/posts', [PostController::class, 'index'])->name('post.index');
-    Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
     Route::get('/posts/add', [PostController::class, 'addPost'])->name('post.add');
+    Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
     Route::post('/posts/add', [PostController::class, 'createPost'])->name('post.create');
     
     Route::get('/posts/{id}/comment', [CommentController::class, 'addComment'])->name('comment.add');

@@ -42,11 +42,11 @@
                             <td class = "align-middle">{{ $favorite->post->title }}</td>
                             <td class = "align-middle">{{ $favorite->post->user->username }}</td>
                             <td class = "align-middle">{{ date("F j, Y, g:i a",strtotime($favorite->updated_at)) }}</td>
-                            <td class = "align-middle"><a href="{{ route('post.show', [$favorite->post->id]) }}">Details</a></td>
+                            <td class = "align-middle"><a class = "btn btn-info" href="{{ route('post.show', [$favorite->post->id]) }}">Details</a></td>
                             <td>
                                 <form method="post" action="{{ route('favorites.delete') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-link">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                     <input type="hidden" id="favoriteId" name="favoriteId" value="{{ $favorite->id }}" />
                                 </form>
                             </td>

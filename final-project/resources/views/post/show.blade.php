@@ -51,12 +51,12 @@
                                 <td class = "align-middle">{{ $comment->user->username }}</td>
                                 <td class = "align-middle">{{ date("F j, Y, g:i a",strtotime($comment->updated_at)) }}</td>
                                 <td class = "align-middle">{{ $comment->body }}</td>
-                                @if ($user->username == $comment->user->username)
-                                    <td class = "align-middle"><a href="{{ route('comment.edit', [$comment->id]) }}">Edit</a></td>
+                                @if ($user->username == $comment->user->name)
+                                    <td class = "align-middle"><a class = "btn btn-warning" href="{{ route('comment.edit', [$comment->id]) }}">Edit</a></td>
                                     <td>
                                         <form method="post" action="{{ route('comment.delete') }}">
                                             @csrf
-                                            <button type="submit" class="btn btn-link">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
                                             <input type="hidden" id="commentId" name="commentId" value="{{ $comment->id }}" />
                                             <input type="hidden" id="postId" name="postId" value="{{ $comment->post_id }}" />
                                         </form>

@@ -12,7 +12,7 @@
 
     <h1>{{ $user->name }}'s Recipe Feed</h1>
 
-    <a href="{{ route('post.add') }}">Add Post</a>
+    <a class = "btn btn-primary" href="{{ route('post.add') }}">Add Post</a>
 
     @if ($count == 0)
         <h3>No posts yet!</h3>
@@ -35,11 +35,11 @@
                         <!-- <td>{{ $post->cuisine }}</td>
                         <td>{{ $post->allergens }}</td>
                         <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->
-                        <td class = "align-middle"><a href="{{ route('post.show', [$post->id]) }}">Details</a></td>
+                        <td class = "align-middle"><a class = "btn btn-info" href="{{ route('post.show', [$post->id]) }}">Details</a></td>
                         <td>
                             <form method="post" action="{{ route('favorites.add') }}">
                                 @csrf
-                                <button type="submit" class="btn btn-link">Add to Favorites</button>
+                                <button type="submit" class="btn btn-success">Add to Favorites</button>
                                 <input type="hidden" id="username" name="username" value="{{ $user->username }}" />
                                 <input type="hidden" id="postId" name="postId" value="{{ $post->id }}" />
                             </form>
