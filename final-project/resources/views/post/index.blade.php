@@ -33,7 +33,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td class = "align-middle">{{ $post->title }}</td>
-                        <td class = "align-middle">{{ $post->username }}</td>
+                        <td class = "align-middle">{{ $post->user->username }}</td>
                         <!-- <td>{{ $post->cuisine }}</td>
                         <td>{{ $post->allergens }}</td>
                         <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->

@@ -18,7 +18,7 @@
 
     <h1 class = "text-center">{{ $post->title }} by {{ $post->user->username}}</h1>
 
-    <!-- <div class="d-flex p-2"> -->
+    <div class="d-flex">
         <div class = "container">
             <h2 class = "text-center"><u>Recipe Details</u></h4>
             <h4 class = "text-center">Cuisine: {{ $post->cuisine }}</h4>
@@ -30,7 +30,6 @@
 
         <div class ="container">
             <h2 class = "text-center"><u>Comments</u></h4>
-            <h6 class = "text-center"><a href="{{ route('comment.add', [$post->id]) }}">Add Comment</a></h6>
             @if ($commentCount == 0)
                 <h6 class = "text-center">No comments yet!</h6>
             @else
@@ -70,8 +69,9 @@
                     </tbody>
                 </table>
             @endif
+            <h6 class = "text-end"><a class = "btn btn-primary" href="{{ route('comment.add', [$post->id]) }}">Add Comment</a></h6>
         </div>
-    <!-- </div> -->
+    </div>
     
 
 
