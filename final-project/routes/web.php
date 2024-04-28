@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\InspoController;
+
 
 
 Route::get('/', function () {
@@ -37,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/favorites', [FavoriteController::class, 'addFavorite'])->name('favorites.add');
     Route::post('/favorites/delete', [FavoriteController::class, 'removeFavorite'])->name('favorites.delete');
+
+    Route::get('/inspo', [InspoController::class, 'index'])->name('inspo.index');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
