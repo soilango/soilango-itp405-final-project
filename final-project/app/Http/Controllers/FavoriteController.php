@@ -12,14 +12,11 @@ class FavoriteController extends Controller
         $favorite->user_id = $request->input('user_id');
         $favorite->post_id = $request->input('postId');
 
-        // dd($request);
         $exists = Favorite::where('post_id', '=', $request->input('postId'))
                     ->where('user_id', '=', $request->input('user_id'))
                     ->first();
 
-        // $count = count($favorites);
 
-        // dd($exists);
 
         if ($exists) {
             return redirect()->route('profile.index')->with('error', "This post is already in favorites!");

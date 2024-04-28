@@ -34,9 +34,6 @@
                     <tr>
                         <td class = "align-middle">{{ $post->title }}</td>
                         <td class = "align-middle">{{ $post->user->username }}</td>
-                        <!-- <td>{{ $post->cuisine }}</td>
-                        <td>{{ $post->allergens }}</td>
-                        <td><a href="{{ $post->instructions }}" target="_blank">Instructions</a><td> -->
                         <td class = "align-middle"><a class = "btn btn-info" href="{{ route('post.show', [$post->id]) }}">Details</a></td>
                         <td>
                             <form method="post" action="{{ route('favorites.add') }}">

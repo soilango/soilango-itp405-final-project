@@ -15,10 +15,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with(['user'])->get();
-        // $posts = Post::join('users', 'users.username', '=', 'posts.username')->get();
         $count = count($posts);
 
-        // dd($posts);
         return view('post/index', [
             'user' => Auth::user(),
             'posts' => $posts,
@@ -35,14 +33,11 @@ class PostController extends Controller
     public function show($id) {
         $post = Post::with(['user', 'comments'])->where('id', '=', $id)->first();
 
-        // dd($post);
 
         $commentCount = count($post->comments);
-        // dd($commentCount);
 
         $comments = Comment::with(['user'])->where('post_id', '=', $id)->orderBy('updated_at', 'DESC')->get();
 
-        // dd($comments);
         return view('post/show', [
             'user' => Auth::user(),
             'post' => $post,
@@ -65,9 +60,7 @@ class PostController extends Controller
         $post->allergens = $request->input('allergens');
         $post->instructions = $request->input('instructions'); // bcrypt
         $post->user_id = $request->input('user_id');
-        // dd($user);
 
-        // dd($post);
         $post->save();
 
         return redirect()

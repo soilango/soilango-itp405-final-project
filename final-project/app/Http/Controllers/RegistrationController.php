@@ -28,7 +28,6 @@ class RegistrationController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password')); // bcrypt
         
-        // dd($user);
         $user->save();
 
         Auth::login($user);

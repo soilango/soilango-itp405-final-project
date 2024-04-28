@@ -28,7 +28,6 @@ class CommentController extends Controller
         $comment->user_id = $request->input('user_id');
         $comment->post_id = $request->input('postId');
         
-        // dd($comment);
 
         $comment->save();
 
@@ -40,7 +39,6 @@ class CommentController extends Controller
 
     public function editComment($id) {
         $comment = Comment::with(['post', 'user'])->where('id', '=', $id)->first();
-        // dd($comment);
 
         return view('comment/edit', [
             'user' => Auth::user(),

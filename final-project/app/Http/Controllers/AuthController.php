@@ -23,7 +23,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // dd($request);
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -33,7 +32,6 @@ class AuthController extends Controller
             'password' => $request->input('password'),
         ]);
 
-        // dd($loginWasSuccessful);
 
         if ($loginWasSuccessful) {
             return redirect()->route('profile.index')->with('success', "Login success!");
