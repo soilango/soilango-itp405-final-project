@@ -13,7 +13,9 @@ class FavoriteController extends Controller
         $favorite->post_id = $request->input('postId');
 
         // dd($request);
-        $exists = Favorite::where('post_id', '=', $request->input('postId'))->first();
+        $exists = Favorite::where('post_id', '=', $request->input('postId'))
+                    ->where('user_id', '=', $request->input('user_id'))
+                    ->first();
 
         // $count = count($favorites);
 

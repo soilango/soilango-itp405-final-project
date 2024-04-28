@@ -38,7 +38,7 @@ class AuthController extends Controller
         if ($loginWasSuccessful) {
             return redirect()->route('profile.index')->with('success', "Login success!");
         } else {
-            return redirect()->route('login')->with('error', 'Invalid credentials.');
+            return redirect()->route('login')->withInput()->with('error', 'Invalid credentials.');
         }
     }
 }
