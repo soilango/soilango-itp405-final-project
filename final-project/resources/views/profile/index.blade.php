@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Profile')
+@section('title', "{$user->name}'s Profile")
 
 @section('main')
 
