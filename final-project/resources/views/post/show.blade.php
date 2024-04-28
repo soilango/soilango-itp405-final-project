@@ -52,7 +52,7 @@
                                 <td class = "align-middle">{{ $comment->body }}</td>
                                 @if ($user->id == $comment->user->id)
                                     <td class = "align-middle"><a class = "btn btn-warning" href="{{ route('comment.edit', [$comment->id]) }}">Edit</a></td>
-                                    <td>
+                                    <td class = "align-middle">
                                         <form method="post" action="{{ route('comment.delete') }}">
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Delete</button>
